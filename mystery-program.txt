@@ -1,0 +1,14 @@
+
+
+lst:
+                  ----------
+                 |          |
+  1 -> 2 -> 3 -> 4          5 -> null
+  |    |    |    |    |     |     |
+            cur
+                 nn
+
+
+So: this program removes duplicate in a linked list.
+
+Runtime: O(n^2); because it has to iterate through every item n-times (nested loops)
