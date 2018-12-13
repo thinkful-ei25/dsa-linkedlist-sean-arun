@@ -39,10 +39,14 @@ class LinkedList {
     return currNode;
   }
 
-  remove(item) {
+  throwIfEmpty(item){ 
     if (!this.head) {
-      throw new Error(`List is empty, cannot remove ${item}`);
+        throw new Error(`List is empty, cannot find ${item}`);
     }
+  }
+
+  remove(item) {
+   this.throwIfEmpty(item); 
 
     if (this.head.value === item) {
       this.head = this.head.next;
@@ -62,6 +66,28 @@ class LinkedList {
 
     prev.next = curr.next;
   }
+
+  insertBefore(item, key){ 
+    this.throwIfEmpty(item); 
+    
+    let curr = this.head; 
+    let prev; 
+
+    while(curr && curr.value !== key){ 
+        prev = curr; 
+        curr = curr.next; 
+    }
+    
+    if (!curr){ 
+        throw new Error(`Could not find ${item}`); 
+    } 
+
+    const instertNode = new Node(item, curr); 
+    if (prev){
+        prev.next = instertNode; 
+    }
+  }
+
 }
 
 module.exports = LinkedList;
