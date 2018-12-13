@@ -91,11 +91,6 @@ class LinkedList {
   insertAfter(item, key) {
     this.throwIfEmpty(key);
 
-    // let curr = this.head;
-    // while (curr && curr.value !== key) {
-    //   curr = curr.next;
-    // }
-
     const curr = this.find(key);
 
     if (!curr) {
@@ -120,6 +115,51 @@ class LinkedList {
     const insertedNode = new Node(item, curr.next);
     curr.next = insertedNode;
   }
+
+  display(){ 
+    for(let curr = this.head; curr; curr=curr.next){ 
+      console.log(curr.value); 
+    }
+  }
+
+  size(){
+    let count = 0;  
+    for(let curr = this.head; curr; curr=curr.next){ 
+      count++; 
+    }
+    return count; 
+  }
+
+  isEmpty(){ 
+    return !this.head; 
+  }
+
+  findPrevious(item){ 
+    this.throwIfEmpty(); 
+
+    if (this.head.value === item){ 
+      throw new Error(`There is nothing before ${item}`); 
+    }
+    let curr = this.head; 
+    let prev = null; 
+
+    while(curr && curr.value !== item){ 
+      prev = curr; 
+      curr = curr.next; 
+    }
+    
+    if (!curr){ 
+      throw new Error(`Could not find ${item}`); 
+    }
+
+    return prev; 
+  }
+
+  findLast(item){ 
+
+  }
+
+
 }
 
 module.exports = LinkedList;
