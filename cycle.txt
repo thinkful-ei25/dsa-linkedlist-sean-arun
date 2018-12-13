@@ -18,9 +18,14 @@ A -> B -> C -> D
 
 A -> B -> C -> D
 
+
+
 visited = []; 
 let curr
 while(curr){ 
-    curr = curr.next; 
-    visited.push(curr); 
+    //check
+    //check check === true return true; 
+    //push
+    //go up   
 }
+return false; 

@@ -225,16 +225,15 @@ class LinkedList {
   }
   hasCycle(){ 
     this.throwIfEmpty(); 
-
-    let visited = []; 
+    
+    let visited = new Set(); 
     let curr = this.head; 
 
     while(curr){ 
-      if (visited.includes(curr)){ 
+      if (visited.has(curr)){ 
         return true; 
       }
-
-      visited.push(curr); 
+      visited.add(curr); 
       curr = curr.next; 
     }
     return false; 
