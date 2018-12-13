@@ -68,6 +68,21 @@ function main() {
   sll.display();
   console.log(sll.thirdFromEnd());
   console.log(sll.middle());
+
+  const cyclical = new LinkedList(); 
+  cyclical.insertFirst('Bacon'); 
+  //store tail
+  const bacon = cyclical.head; 
+  cyclical.insertFirst('Eggs'); 
+  cyclical.insertFirst('Toast'); 
+  cyclical.insertFirst('Potatoes');
+  //create cycle!!
+  bacon.next = cyclical.head;  
+  cyclical.insertFirst('Pancakes'); 
+
+  console.log(cyclical.hasCycle()); 
+  console.log(sll.hasCycle()); 
+
 }
 
 main();

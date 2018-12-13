@@ -223,6 +223,22 @@ class LinkedList {
 
     return middle;
   }
+  hasCycle(){ 
+    this.throwIfEmpty(); 
+
+    let visited = []; 
+    let curr = this.head; 
+
+    while(curr){ 
+      if (visited.includes(curr)){ 
+        return true; 
+      }
+
+      visited.push(curr); 
+      curr = curr.next; 
+    }
+    return false; 
+  } 
 }
 
 module.exports = LinkedList;
