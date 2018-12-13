@@ -169,6 +169,27 @@ class LinkedList {
 
     return lastItem;
   }
+
+  reverse(){ 
+    this.throwIfEmpty(); 
+
+    if (this.head.next === null){ 
+      throw new Error('You cannot reverse a list that only has one item!'); 
+    }
+
+    let prev = null; 
+    let curr = this.head; 
+    let following; 
+
+    while(curr !== null){ 
+      following = curr.next; 
+      curr.next = prev; 
+      prev = curr; 
+      curr = following; 
+    }
+
+    this.head = prev; 
+  }
 }
 
 module.exports = LinkedList;

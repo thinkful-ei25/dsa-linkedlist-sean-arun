@@ -62,6 +62,8 @@ function main() {
   }
 
   console.log(sll.findLast());
+  sll.reverse(); 
+  sll.display(); 
 }
 
 main();
