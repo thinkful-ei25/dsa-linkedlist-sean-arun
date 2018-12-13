@@ -4,7 +4,12 @@ const LinkedList = require('./Linked-List');
 
 function main() {
   const sll = new LinkedList();
-  console.log(sll.isEmpty());  
+  console.log(sll.isEmpty());
+  try {
+    console.log(sll.findLast());
+  } catch (e) {
+    console.error(e.message);
+  }
 
   sll.insertLast('Apollo');
   sll.insertLast('Boomer');
@@ -39,22 +44,24 @@ function main() {
     console.error(e.message);
   }
 
-  sll.display(); 
+  sll.display();
   console.log(sll.size());
-  console.log(sll.isEmpty());  
-  console.log(sll.findPrevious('Starbuck')); 
-  
-  try{ 
-    console.log(sll.findPrevious('Apollo')); 
-  } catch(e){ 
-    console.error(e.message); 
+  console.log(sll.isEmpty());
+  console.log(sll.findPrevious('Starbuck'));
+
+  try {
+    console.log(sll.findPrevious('Apollo'));
+  } catch (e) {
+    console.error(e.message);
   }
 
-  try { 
-    console.log(sll.findPrevious('Arun')); 
-  } catch (e){ 
-    console.error(e.message); 
+  try {
+    console.log(sll.findPrevious('Arun'));
+  } catch (e) {
+    console.error(e.message);
   }
+
+  console.log(sll.findLast());
 }
 
 main();

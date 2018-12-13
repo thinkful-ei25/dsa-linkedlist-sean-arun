@@ -41,7 +41,8 @@ class LinkedList {
 
   throwIfEmpty(item) {
     if (!this.head) {
-      throw new Error(`List is empty, cannot find ${item}`);
+      const message = item ? `List is empty, cannot find ${item}` : 'List is empty';
+      throw new Error(message);
     }
   }
 
@@ -116,50 +117,58 @@ class LinkedList {
     curr.next = insertedNode;
   }
 
-  display(){ 
-    for(let curr = this.head; curr; curr=curr.next){ 
-      console.log(curr.value); 
+  display() {
+    for (let curr = this.head; curr; curr = curr.next) {
+      console.log(curr.value);
     }
   }
 
-  size(){
-    let count = 0;  
-    for(let curr = this.head; curr; curr=curr.next){ 
-      count++; 
+  size() {
+    let count = 0;
+    for (let curr = this.head; curr; curr = curr.next) {
+      count++;
     }
-    return count; 
+    return count;
   }
 
-  isEmpty(){ 
-    return !this.head; 
+  isEmpty() {
+    return !this.head;
   }
 
-  findPrevious(item){ 
-    this.throwIfEmpty(); 
+  findPrevious(item) {
+    this.throwIfEmpty();
 
-    if (this.head.value === item){ 
-      throw new Error(`There is nothing before ${item}`); 
+    if (this.head.value === item) {
+      throw new Error(`There is nothing before ${item}`);
     }
-    let curr = this.head; 
-    let prev = null; 
+    let curr = this.head;
+    let prev = null;
 
-    while(curr && curr.value !== item){ 
-      prev = curr; 
-      curr = curr.next; 
-    }
-    
-    if (!curr){ 
-      throw new Error(`Could not find ${item}`); 
+    while (curr && curr.value !== item) {
+      prev = curr;
+      curr = curr.next;
     }
 
-    return prev; 
+    if (!curr) {
+      throw new Error(`Could not find ${item}`);
+    }
+
+    return prev;
   }
 
-  findLast(item){ 
+  findLast() {
+    // Use a while loop to iterate through, return last
+    this.throwIfEmpty();
 
+    let curr = this.head;
+    let lastItem;
+    while (curr) {
+      lastItem = curr;
+      curr = curr.next;
+    }
+
+    return lastItem;
   }
-
-
 }
 
 module.exports = LinkedList;
