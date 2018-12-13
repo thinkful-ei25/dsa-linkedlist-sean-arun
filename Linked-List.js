@@ -190,6 +190,22 @@ class LinkedList {
 
     this.head = prev; 
   }
+
+  thirdFromEnd(){ 
+    this.throwIfEmpty(); 
+
+    if (this.head.next === null || this.head.next.next === null){ 
+      throw new Error('Cannot get the third from last item when there are less than three items'); 
+    }
+
+    let curr = this.head;
+    
+    while(curr.next.next.next !== null){ 
+      curr = curr.next; 
+    }
+
+    return curr; 
+  }
 }
 
 module.exports = LinkedList;

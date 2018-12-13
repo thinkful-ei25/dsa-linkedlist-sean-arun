@@ -1,0 +1,20 @@
+A -> B -> C -> D 
+     curr
+     curr.next.next.next === null
+
+
+A -> B -> C
+curr = A
+curr.next = B
+curr.next.next = C
+curr.next.next.next === null
+
+A -> B 
+
+throw an error: can't get the third to last item when only two items
+curr.next.next === null
+
+if (this.head === null) also throw an error
+
+if (this.head.next === null) also throw an error
+
