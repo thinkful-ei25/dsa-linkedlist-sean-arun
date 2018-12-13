@@ -27,6 +27,15 @@ function main() {
   } catch (e) {
     console.error(e.message);
   }
+
+  try {
+    sll.insertBefore('Athena', 'Boomer');
+    sll.insertAfter('Hotdog', 'Helo');
+    sll.insertAt('Kat', 3);
+    sll.remove('Tauhida');
+  } catch (e) {
+    console.error(e.message);
+  }
 }
 
 main();
