@@ -1,0 +1,50 @@
+
+
+input:
+
+    head = 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
+
+    head = 1 <- 2 <- 3 <- 4 <- 5 <- 6 <- 7
+
+    1
+
+    []
+
+    1 -> 2 -> 3
+    1 <- 2 <- 3
+
+out:
+           1 <- 2 <- 3 <- 4 <- 5 <- 6 <- 7 = head
+ 
+
+O(n) requirement:
+
+This means we should be able to accomplish this by scanning from left to right
+
+
+if head is null, do nothing
+
+prev = null
+curr = head
+Iterate through the list
+while (current != null)
+ // prev: null, 1, 2, 3
+ // curr: 1, 2, 3, null
+ // following: 2, 3, null
+
+  following = curr.next
+  curr.next = prev
+  prev = curr
+  curr = following
+
+head = prev
+
+  
+
+where we are
+what _should_ be next in the unadulterated version of the list
+For each item,
+  Reset the following item's "next pointer" to point to us
+Set the new head of the list to the be the item
+
+
