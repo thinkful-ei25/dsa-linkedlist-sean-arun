@@ -67,6 +67,7 @@ function main() {
   sll.reverse();
   sll.display();
   console.log(sll.thirdFromEnd());
+  console.log(sll.middle());
 }
 
 main();

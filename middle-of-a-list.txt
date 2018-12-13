@@ -1,0 +1,70 @@
+Middle of a list
+------------------------
+Write an algorithm to find the middle element of a linked list. Note You may
+be tempted to add a length property to your Linked List class. The length
+property is not a typical property of linked list, therefore don't make any
+modification to the Linked list class that is provided to you. Also, finding
+the size of the linked list using the size() function and dividing it by half
+will not find the correct middle of the linked list. So, don't use either of
+these approaches.
+
+
+Assumption (that would normally check w/an interviewer): we always want the lower bound
+
+Input:
+
+1 -> 2 -> 3 -> 4 -> 5 -> 6
+    => 3
+
+1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
+    => 4
+
+ideal: O(n)
+
+Dumb human way: figure out the size, divide by two and move over that many spaces
+NOPE, not-allowed
+
+Dumb human way 2: Two pointers at either end of the list, move inwards, until
+they overlap, at which point left most is the middle
+NOPE: cant move leftwards
+This assumes that we can determine whether a pointer is to the left or right
+of another pointer; which is a invalid assumption w/linked lists
+
+Middle of this list: n/2 places. If we can figure out out a way of only
+traversing n/2 times, then we can find the middle.
+
+1 ->   -> 3 ->   -> 5 ->   -> 7
+
+
+1.next.next => 3
+3.next.next => 5
+5.next.next => 7
+7.next.next => ERROR
+7.next || 7.next.next === null seems to be our termination point
+
+If i can count n/2 times, i can move another pointer concurrently and that
+point will end up at the middle
+
+Looking at this as an array:
+j = 0
+for (i = 0; i < arr.length; i += 2) {
+  j += 1
+}
+arr[j] is middle
+
+curr = head
+middle = head
+while (curr.next != null && curr.next.next != null)
+  curr = curr.next.next
+  middle = middle.next
+return middle
+
+1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
+
+curr: 1, 3, 5, 7
+middle: 1, 2, 3, 4
+
+1
+curr: 1
+middle: 1
+

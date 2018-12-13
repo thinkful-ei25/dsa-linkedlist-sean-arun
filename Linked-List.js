@@ -209,6 +209,20 @@ class LinkedList {
 
     return curr;
   }
+
+  middle() {
+    this.throwIfEmpty();
+
+    let curr = this.head;
+    let middle = curr;
+
+    while (curr.next && curr.next.next) {
+      curr = curr.next.next;
+      middle = middle.next;
+    }
+
+    return middle;
+  }
 }
 
 module.exports = LinkedList;
