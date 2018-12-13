@@ -39,7 +39,29 @@ class LinkedList {
     return currNode;
   }
 
-  remove(item) {}
+  remove(item) {
+    if (!this.head) {
+      throw new Error(`List is empty, cannot remove ${item}`);
+    }
+
+    if (this.head.value === item) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let curr = this.head;
+    let prev;
+    while (curr && curr.value !== item) {
+      prev = curr;
+      curr = curr.next;
+    }
+
+    if (!curr) {
+      throw new Error(`Value ${item} not found`);
+    }
+
+    prev.next = curr.next;
+  }
 }
 
 module.exports = LinkedList;
