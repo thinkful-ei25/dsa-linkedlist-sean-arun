@@ -225,7 +225,8 @@ class LinkedList {
   }
   hasCycle(){ 
     this.throwIfEmpty(); 
-    
+
+    //uses set for O(1) lookup!
     let visited = new Set(); 
     let curr = this.head; 
 
