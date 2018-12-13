@@ -39,14 +39,14 @@ class LinkedList {
     return currNode;
   }
 
-  throwIfEmpty(item){ 
+  throwIfEmpty(item) {
     if (!this.head) {
-        throw new Error(`List is empty, cannot find ${item}`);
+      throw new Error(`List is empty, cannot find ${item}`);
     }
   }
 
   remove(item) {
-   this.throwIfEmpty(item); 
+    this.throwIfEmpty(item);
 
     if (this.head.value === item) {
       this.head = this.head.next;
@@ -67,27 +67,44 @@ class LinkedList {
     prev.next = curr.next;
   }
 
-  insertBefore(item, key){ 
-    this.throwIfEmpty(item); 
-    
-    let curr = this.head; 
-    let prev; 
+  insertBefore(item, key) {
+    this.throwIfEmpty(key);
 
-    while(curr && curr.value !== key){ 
-        prev = curr; 
-        curr = curr.next; 
+    let curr = this.head;
+    let prev;
+
+    while (curr && curr.value !== key) {
+      prev = curr;
+      curr = curr.next;
     }
-    
-    if (!curr){ 
-        throw new Error(`Could not find ${item}`); 
-    } 
 
-    const instertNode = new Node(item, curr); 
-    if (prev){
-        prev.next = instertNode; 
+    if (!curr) {
+      throw new Error(`Could not find ${item}`);
+    }
+
+    const instertNode = new Node(item, curr);
+    if (prev) {
+      prev.next = instertNode;
     }
   }
 
+  insertAfter(item, key) {
+    this.throwIfEmpty(key);
+
+    // let curr = this.head;
+    // while (curr && curr.value !== key) {
+    //   curr = curr.next;
+    // }
+
+    const curr = this.find(key);
+
+    if (!curr) {
+      throw new Error(`Could not find ${key}`);
+    }
+
+    const insertedNode = new Node(item, curr.next);
+    curr.next = insertedNode;
+  }
 }
 
 module.exports = LinkedList;
