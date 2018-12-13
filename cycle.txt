@@ -29,3 +29,21 @@ while(curr){
     //go up   
 }
 return false; 
+
+                --------------
+               |              |
+G -> A -> B -> C -> D -> E -> F
+                    c
+                    a          
+
+curr = head
+advanced = curr.next.next // bounds check because, if curr.next == null, then there's no cycle
+
+
+while (curr && advanced && advanced.next) 
+    advanced = advanced.next.next
+    curr = curr.next
+    if (advanced = curr)
+        return true
+
+return false
