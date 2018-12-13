@@ -2,7 +2,7 @@
 
 class Node {
   constructor(item, next = null, prev = null) {
-    this.item = item;
+    this.value = item;
     this.next = next;
     this.prev = prev;
   }
@@ -19,15 +19,25 @@ class DoubleLinkedList {
     if (this.head) {
       this.head.prev = insertedNode;
     }
+    if (!this.tail) {
+      this.tail = insertedNode;
+    }
+
     this.head = insertedNode;
   }
 
   insertLast(item) {
-    const instertedNode = new Node(item, null, this.tail);
+    const insertedNode = new Node(item, null, this.tail);
+
     if (this.tail) {
-      this.tail.next = instertedNode;
+      this.tail.next = insertedNode;
     }
-    this.tail = instertedNode;
+
+    if (!this.head) {
+      this.head = insertedNode;
+    }
+
+    this.tail = insertedNode;
   }
 
   find(item) {
@@ -104,4 +114,27 @@ class DoubleLinkedList {
       position.next.prev = position.prev;
     }
   }
+
+  reverse() {
+    let curr = this.head;
+
+    this.head = this.tail;
+    this.tail = curr;
+
+    while (curr) {
+      const temp = curr.next;
+      curr.next = curr.prev;
+      curr.prev = temp;
+      curr = temp;
+    }
+  }
+
+  display() {
+    for (let curr = this.head; curr; curr = curr.next) {
+      // eslint-disable-next-line no-console
+      console.log(curr.value);
+    }
+  }
 }
+
+module.exports = DoubleLinkedList;
