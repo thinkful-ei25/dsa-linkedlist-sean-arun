@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 'use strict';
 
 const LinkedList = require('./Linked-List');
@@ -62,10 +64,9 @@ function main() {
   }
 
   console.log(sll.findLast());
-  sll.reverse(); 
+  sll.reverse();
   sll.display();
-  console.log(sll.thirdFromEnd()); 
-
+  console.log(sll.thirdFromEnd());
 }
 
 main();
