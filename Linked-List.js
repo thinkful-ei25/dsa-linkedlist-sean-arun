@@ -105,6 +105,21 @@ class LinkedList {
     const insertedNode = new Node(item, curr.next);
     curr.next = insertedNode;
   }
+
+  insertAt(item, position) {
+    let curr = this.head;
+
+    for (let i = 0; i < position - 1; i += 1) {
+      if (!curr) {
+        throw new Error(`List length is less than ${position}`);
+      }
+
+      curr = curr.next;
+    }
+
+    const insertedNode = new Node(item, curr.next);
+    curr.next = insertedNode;
+  }
 }
 
 module.exports = LinkedList;
